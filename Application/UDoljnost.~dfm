@@ -1,0 +1,109 @@
+object fDoljnost: TfDoljnost
+  Left = 723
+  Top = 276
+  Width = 321
+  Height = 414
+  BorderIcons = [biSystemMenu, biMinimize]
+  Caption = 'MoBika ('#1087#1088#1080#1083#1086#1078#1077#1085#1080#1077')'
+  Color = clBtnFace
+  Constraints.MaxHeight = 414
+  Constraints.MaxWidth = 321
+  Constraints.MinHeight = 414
+  Constraints.MinWidth = 321
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object DBGrid1: TDBGrid
+    Left = 24
+    Top = 16
+    Width = 265
+    Height = 129
+    DataSource = DM.DSDoljnost
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
+    OnCellClick = DBGrid1CellClick
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'DOLJNOST_ID'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'NAME_DOL'
+        Title.Caption = #1044#1086#1083#1078#1085#1086#1089#1090#1100' '#1089#1086#1090#1088#1091#1076#1085#1080#1082#1072
+        Width = 140
+        Visible = True
+      end>
+  end
+  object GroupBox1: TGroupBox
+    Left = 24
+    Top = 152
+    Width = 273
+    Height = 65
+    Caption = '   '#1044#1086#1073#1072#1074#1083#1077#1085#1080#1077' '#1085#1086#1074#1086#1081' '#1076#1086#1083#1078#1085#1086#1089#1090#1080'   '
+    TabOrder = 1
+    object SpeedButton1: TSpeedButton
+      Left = 192
+      Top = 24
+      Width = 65
+      Height = 22
+      Caption = #1044#1086#1073#1072#1074#1080#1090#1100
+    end
+    object Edit2: TEdit
+      Left = 16
+      Top = 24
+      Width = 153
+      Height = 21
+      TabOrder = 0
+    end
+  end
+  object GroupBox2: TGroupBox
+    Left = 24
+    Top = 232
+    Width = 273
+    Height = 81
+    Caption = '   '#1048#1079#1084#1077#1085#1077#1085#1080#1077' '#1076#1086#1083#1078#1085#1086#1089#1090#1080'   '
+    TabOrder = 2
+    object SpeedButton2: TSpeedButton
+      Left = 192
+      Top = 16
+      Width = 65
+      Height = 22
+      Caption = #1048#1079#1084#1077#1085#1080#1090#1100
+    end
+    object SpeedButton3: TSpeedButton
+      Left = 192
+      Top = 48
+      Width = 65
+      Height = 22
+      Caption = #1059#1076#1072#1083#1077#1085#1080#1077
+    end
+    object Edit1: TEdit
+      Left = 16
+      Top = 40
+      Width = 153
+      Height = 21
+      TabOrder = 0
+    end
+  end
+  object LabeledEdit1: TLabeledEdit
+    Left = 32
+    Top = 344
+    Width = 121
+    Height = 21
+    EditLabel.Width = 35
+    EditLabel.Height = 13
+    EditLabel.Caption = #1055#1086#1080#1089#1082':'
+    TabOrder = 3
+  end
+end

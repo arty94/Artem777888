@@ -1,0 +1,389 @@
+object DM: TDM
+  OldCreateOrder = False
+  Left = 203
+  Top = 323
+  Height = 641
+  Width = 1426
+  object IBDatabase1: TIBDatabase
+    Connected = True
+    DatabaseName = 'localhost:C:\Users\Nikita\Desktop\MyProg\Database\MYMAGAZ.FDB'
+    Params.Strings = (
+      'user_name=SYSDBA'
+      'password=masterkey')
+    LoginPrompt = False
+    DefaultTransaction = IBTransaction1
+    IdleTimer = 0
+    SQLDialect = 3
+    TraceFlags = []
+    Left = 40
+    Top = 16
+  end
+  object IBTransaction1: TIBTransaction
+    Active = True
+    DefaultDatabase = IBDatabase1
+    AutoStopAction = saNone
+    Left = 136
+    Top = 16
+  end
+  object DSSotrudnik: TDataSource
+    DataSet = IBQSotrudnik
+    Left = 208
+    Top = 64
+  end
+  object IBQSotrudnik: TIBQuery
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    Active = True
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'select '
+      '    sotrudnik.sotrudnik_id,'
+      '    sotrudnik.fam,'
+      '    sotrudnik.imya,'
+      '    sotrudnik.otch,'
+      '    sotrudnik.doljnost_id,'
+      '    sotrudnik.seria_nom_pas,'
+      '    sotrudnik.data_vidachi,'
+      '    sotrudnik.kem_vidan,'
+      '    sotrudnik.data_roj,'
+      '    sotrudnik.mesto_roj,'
+      '    sotrudnik.oklad,'
+      '    sotrudnik.adres,'
+      '    doljnost.doljnost_id,'
+      '    doljnost.name_dol'
+      'from doljnost'
+      
+        '   inner join sotrudnik on (doljnost.doljnost_id = sotrudnik.dol' +
+        'jnost_id)')
+    Left = 208
+    Top = 16
+    object IBQSotrudnikSOTRUDNIK_ID: TIntegerField
+      FieldName = 'SOTRUDNIK_ID'
+      Origin = 'SOTRUDNIK.SOTRUDNIK_ID'
+      Required = True
+    end
+    object IBQSotrudnikFAM: TIBStringField
+      FieldName = 'FAM'
+      Origin = 'SOTRUDNIK.FAM'
+    end
+    object IBQSotrudnikIMYA: TIBStringField
+      FieldName = 'IMYA'
+      Origin = 'SOTRUDNIK.IMYA'
+    end
+    object IBQSotrudnikOTCH: TIBStringField
+      FieldName = 'OTCH'
+      Origin = 'SOTRUDNIK.OTCH'
+    end
+    object IBQSotrudnikDOLJNOST_ID: TIntegerField
+      FieldName = 'DOLJNOST_ID'
+      Origin = 'SOTRUDNIK.DOLJNOST_ID'
+    end
+    object IBQSotrudnikSERIA_NOM_PAS: TIBStringField
+      FieldName = 'SERIA_NOM_PAS'
+      Origin = 'SOTRUDNIK.SERIA_NOM_PAS'
+      Size = 15
+    end
+    object IBQSotrudnikDATA_VIDACHI: TIBStringField
+      FieldName = 'DATA_VIDACHI'
+      Origin = 'SOTRUDNIK.DATA_VIDACHI'
+      Size = 15
+    end
+    object IBQSotrudnikKEM_VIDAN: TIBStringField
+      FieldName = 'KEM_VIDAN'
+      Origin = 'SOTRUDNIK.KEM_VIDAN'
+      Size = 50
+    end
+    object IBQSotrudnikDATA_ROJ: TIBStringField
+      FieldName = 'DATA_ROJ'
+      Origin = 'SOTRUDNIK.DATA_ROJ'
+      Size = 15
+    end
+    object IBQSotrudnikMESTO_ROJ: TIBStringField
+      FieldName = 'MESTO_ROJ'
+      Origin = 'SOTRUDNIK.MESTO_ROJ'
+      Size = 50
+    end
+    object IBQSotrudnikOKLAD: TIBStringField
+      FieldName = 'OKLAD'
+      Origin = 'SOTRUDNIK.OKLAD'
+    end
+    object IBQSotrudnikADRES: TIBStringField
+      FieldName = 'ADRES'
+      Origin = 'SOTRUDNIK.ADRES'
+      Size = 50
+    end
+    object IBQSotrudnikDOLJNOST_ID1: TIntegerField
+      FieldName = 'DOLJNOST_ID1'
+      Origin = 'DOLJNOST.DOLJNOST_ID'
+      Required = True
+    end
+    object IBQSotrudnikNAME_DOL: TIBStringField
+      FieldName = 'NAME_DOL'
+      Origin = 'DOLJNOST.NAME_DOL'
+    end
+  end
+  object IBSotrudnik_del: TIBStoredProc
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    StoredProcName = 'SOTRUDNIK_DEL'
+    Left = 208
+    Top = 112
+  end
+  object IBSotrudnik_add: TIBStoredProc
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    StoredProcName = 'SOTRUDNIK_ADD'
+    Left = 208
+    Top = 176
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'FAM'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'IMYA'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'OTCH'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftInteger
+        Name = 'DOLJNOST_ID'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'SERIA_NOM_PAS'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'DATA_VIDACHI'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'KEM_VIDAN'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'DATA_ROJ'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'MESTO_ROJ'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'OKLAD'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftString
+        Name = 'ADRES'
+        ParamType = ptInput
+      end>
+  end
+  object IBSotrudnik_edit: TIBStoredProc
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    StoredProcName = 'SOTRUDNIK_EDIT'
+    Left = 208
+    Top = 232
+  end
+  object DSDoljnost: TDataSource
+    DataSet = IBQDoljnost
+    Left = 304
+    Top = 64
+  end
+  object IBQDoljnost: TIBQuery
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    Active = True
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'select '
+      '    doljnost.doljnost_id,'
+      '    doljnost.name_dol'
+      'from doljnost')
+    Left = 304
+    Top = 16
+    object IBQDoljnostDOLJNOST_ID: TIntegerField
+      FieldName = 'DOLJNOST_ID'
+      Origin = 'DOLJNOST.DOLJNOST_ID'
+      Required = True
+    end
+    object IBQDoljnostNAME_DOL: TIBStringField
+      FieldName = 'NAME_DOL'
+      Origin = 'DOLJNOST.NAME_DOL'
+    end
+  end
+  object IBDoljnodt_del: TIBStoredProc
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    StoredProcName = 'DOLJNOST_DEL'
+    Left = 304
+    Top = 112
+  end
+  object IBDoljnost_add: TIBStoredProc
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    StoredProcName = 'DOLJNOST_ADD'
+    Left = 304
+    Top = 176
+  end
+  object IBDoljnost_edit: TIBStoredProc
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    StoredProcName = 'DOLJNOST_EDIT'
+    Left = 304
+    Top = 232
+  end
+  object IBQSobitie: TIBQuery
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    Active = True
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'select '
+      '    sobitie_sotr.sobitie_sotr_id,'
+      '    sobitie_sotr.sotrudnik_id,'
+      '    sobitie_sotr.sobitie_id,'
+      '    sotrudnik.fam,'
+      '    sotrudnik.imya,'
+      '    sotrudnik.otch,'
+      '    sotrudnik.sotrudnik_id,'
+      '    sotrudnik.seria_nom_pas,'
+      '    sobitie.sobitie_id,'
+      '    sobitie.name_sob,'
+      '    sobitie.tip_dokum,'
+      '    sobitie.data_utverj,'
+      '    sobitie.soderjan_dokum'
+      'from sobitie'
+      
+        '   inner join sobitie_sotr on (sobitie.sobitie_id = sobitie_sotr' +
+        '.sobitie_id)'
+      
+        '   inner join sotrudnik on (sobitie_sotr.sotrudnik_id = sotrudni' +
+        'k.sotrudnik_id)')
+    Left = 376
+    Top = 16
+    object IBQSobitieSOBITIE_SOTR_ID: TIntegerField
+      DisplayWidth = 13
+      FieldName = 'SOBITIE_SOTR_ID'
+      Origin = 'SOBITIE_SOTR.SOBITIE_SOTR_ID'
+      Required = True
+    end
+    object IBQSobitieSOTRUDNIK_ID: TIntegerField
+      DisplayWidth = 11
+      FieldName = 'SOTRUDNIK_ID'
+      Origin = 'SOBITIE_SOTR.SOTRUDNIK_ID'
+    end
+    object IBQSobitieSOBITIE_ID: TIntegerField
+      DisplayWidth = 9
+      FieldName = 'SOBITIE_ID'
+      Origin = 'SOBITIE_SOTR.SOBITIE_ID'
+    end
+    object IBQSobitieFAM: TIBStringField
+      DisplayWidth = 9
+      FieldName = 'FAM'
+      Origin = 'SOTRUDNIK.FAM'
+    end
+    object IBQSobitieIMYA: TIBStringField
+      DisplayWidth = 8
+      FieldName = 'IMYA'
+      Origin = 'SOTRUDNIK.IMYA'
+    end
+    object IBQSobitieOTCH: TIBStringField
+      DisplayWidth = 9
+      FieldName = 'OTCH'
+      Origin = 'SOTRUDNIK.OTCH'
+    end
+    object IBQSobitieSOTRUDNIK_ID1: TIntegerField
+      DisplayWidth = 12
+      FieldName = 'SOTRUDNIK_ID1'
+      Origin = 'SOTRUDNIK.SOTRUDNIK_ID'
+      Required = True
+    end
+    object IBQSobitieSERIA_NOM_PAS: TIBStringField
+      DisplayWidth = 13
+      FieldName = 'SERIA_NOM_PAS'
+      Origin = 'SOTRUDNIK.SERIA_NOM_PAS'
+      Size = 15
+    end
+    object IBQSobitieSOBITIE_ID1: TIntegerField
+      DisplayWidth = 9
+      FieldName = 'SOBITIE_ID1'
+      Origin = 'SOBITIE.SOBITIE_ID'
+      Required = True
+    end
+    object IBQSobitieNAME_SOB: TIBStringField
+      DisplayWidth = 13
+      FieldName = 'NAME_SOB'
+      Origin = 'SOBITIE.NAME_SOB'
+      Size = 30
+    end
+    object IBQSobitieTIP_DOKUM: TIBStringField
+      DisplayWidth = 12
+      FieldName = 'TIP_DOKUM'
+      Origin = 'SOBITIE.TIP_DOKUM'
+    end
+    object IBQSobitieDATA_UTVERJ: TIBStringField
+      DisplayWidth = 13
+      FieldName = 'DATA_UTVERJ'
+      Origin = 'SOBITIE.DATA_UTVERJ'
+      Size = 15
+    end
+    object IBQSobitieSODERJAN_DOKUM: TIBStringField
+      DisplayWidth = 88
+      FieldName = 'SODERJAN_DOKUM'
+      Origin = 'SOBITIE.SODERJAN_DOKUM'
+      Size = 100
+    end
+  end
+  object DSSobitie: TDataSource
+    DataSet = IBQSobitie
+    Left = 376
+    Top = 64
+  end
+  object IBQAvtoriz: TIBQuery
+    Database = IBDatabase1
+    Transaction = IBTransaction1
+    Active = True
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'select  * from PROFILE')
+    Left = 24
+    Top = 96
+    object IBQAvtorizID_PROFILE: TIntegerField
+      FieldName = 'ID_PROFILE'
+      Origin = 'PROFILE.ID_PROFILE'
+      Required = True
+    end
+    object IBQAvtorizLOGINN: TIBStringField
+      FieldName = 'LOGINN'
+      Origin = 'PROFILE.LOGINN'
+    end
+    object IBQAvtorizPASWORD: TIBStringField
+      FieldName = 'PASWORD'
+      Origin = 'PROFILE.PASWORD'
+    end
+  end
+  object DSAvtoriz: TDataSource
+    DataSet = IBQAvtoriz
+    Left = 24
+    Top = 144
+  end
+end
